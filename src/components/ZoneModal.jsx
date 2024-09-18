@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
 import FormRange from "react-bootstrap/esm/FormRange";
+import FishSlider from "./FishSlider";
 
 export default function ZoneModal({ name, show, fullscreen, setShow }) {
   const calculateTimeOfDay = (todayMilitaryHrs) => {
@@ -72,13 +73,14 @@ export default function ZoneModal({ name, show, fullscreen, setShow }) {
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId='species'>
             <Form.Label>Species</Form.Label>
-            <Form.Control
+            <FishSlider listOfFish={[]} />
+            {/* <Form.Control
               type='text'
               name='species'
               value={catchReport.species}
               onChange={handleChange}
               required
-            />
+            /> */}
           </Form.Group>
 
           <Form.Group controlId='size'>
@@ -106,17 +108,6 @@ export default function ZoneModal({ name, show, fullscreen, setShow }) {
                 });
               }}
             />
-
-            {/* <Form.Control
-              type='text'
-              name='time_of_day'
-              value={
-                catchReport.time_of_day.toLocaleUpperCase().charAt(0) +
-                catchReport.time_of_day.slice(1).toLocaleLowerCase()
-              }
-              onChange={handleChange}
-              required
-            /> */}
           </Form.Group>
 
           <Form.Group controlId='quantity'>
