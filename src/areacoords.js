@@ -40,7 +40,7 @@ const WEST_WALL = [
 
 const EAST_WALL = [
   [26.910251829851656, -82.09478249600441],
-  [26.934606988700434, -82.05424895349461],
+  [26.93244441718822, -82.05443756808994],
   [26.882484748212597, -82.04935660363307],
   [26.81249140757479, -82.04317679395967],
   [26.73340975624846, -82.05793967253963],
@@ -60,10 +60,20 @@ const UPPER_HARBOR = [
   [26.791289597232467, -82.13512292043752],
   [26.852873045651794, -82.1452509408925],
   [26.88671435882694, -82.15108742791998],
+  
 ];
 
 const LOWER_HARBOR = [
-
+  [26.700855771848246, -82.13274805380323],
+  [26.702681672572517, -82.24481592271225],
+  [26.71826518097387, -82.25882778048467],
+  [26.762424147927707, -82.25455838879529],
+  [26.76924460245553, -82.21893865394371],
+  [26.772621212243678, -82.17305117268765],
+  [26.792362232069188, -82.1493708143173],
+  [26.791289597232467, -82.13512292043752],
+  [26.768666132835744, -82.07785239191296],
+  [26.719917469011943, -82.09536185161618],
 ];
 
 
@@ -80,7 +90,13 @@ const PINE_ISLAND_SOUND = [
 ];
 
 const MATLACHA = [
-
+  [26.73340975624846, -82.05793967253963],
+  [26.671160054616156, -82.06144805906176],
+  [26.574018987484404, -82.03449722599618],
+  [26.546561893769493, -82.08077263542012],
+  [26.631338514427565, -82.12243132240522],
+  [26.700855771848246, -82.13274805380323],
+  [26.719917469011943, -82.09536185161618]
 ];
 
 const NEARSHORE = [
@@ -97,7 +113,7 @@ const fishingzones = [
     coordinates: MAYAKKA_RIVER,
     style: {
       fillColor: "blue",
-      fillOpacity: 0.15,
+      fillOpacity: 0.1,
       strokeColor: "green",
       strokeOpacity: 0.6,
       strokeWeight: 3,
@@ -108,7 +124,7 @@ const fishingzones = [
     coordinates: PEACE_RIVER,
     style: {
       fillColor: "blue",
-      fillOpacity: 0.15,
+      fillOpacity: 0.1,
       strokeColor: "green",
       strokeOpacity: 0.6,
       strokeWeight: 3,
@@ -119,7 +135,7 @@ const fishingzones = [
     coordinates: WEST_WALL,
     style: {
       fillColor: "blue",
-      fillOpacity: 0.15,
+      fillOpacity: 0.1,
       strokeColor: "green",
       strokeOpacity: 0.6,
       strokeWeight: 3,
@@ -130,7 +146,7 @@ const fishingzones = [
     coordinates: EAST_WALL,
     style: {
       fillColor: "blue",
-      fillOpacity: 0.15,
+      fillOpacity: 0.1,
       strokeColor: "green",
       strokeOpacity: 0.6,
       strokeWeight: 3,
@@ -141,7 +157,29 @@ const fishingzones = [
     coordinates: UPPER_HARBOR,
     style: {
       fillColor: "blue",
-      fillOpacity: 0.15,
+      fillOpacity: 0.1,
+      strokeColor: "green",
+      strokeOpacity: 0.6,
+      strokeWeight: 3,
+    },
+  },
+  {
+    name: "Lower Harbor",
+    coordinates: LOWER_HARBOR,
+    style: {
+      fillColor: "blue",
+      fillOpacity: 0.1,
+      strokeColor: "green",
+      strokeOpacity: 0.6,
+      strokeWeight: 3,
+    },
+  },
+  {
+    name: "Matlache",
+    coordinates: MATLACHA,
+    style: {
+      fillColor: "blue",
+      fillOpacity: 0.1,
       strokeColor: "green",
       strokeOpacity: 0.6,
       strokeWeight: 3,
