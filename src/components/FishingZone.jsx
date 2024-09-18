@@ -22,7 +22,7 @@ export default function FishingZone({ coordinates, name, style }) {
       lat: coordPair[0],
       lng: coordPair[1],
     }));
-    console.log(latlng);
+
     return latlng;
   };
 
