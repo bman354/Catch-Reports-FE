@@ -2,11 +2,11 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
+import FormRange from "react-bootstrap/esm/FormRange";
 
 export default function ZoneModal({ name, show, fullscreen, setShow }) {
   const calculateTimeOfDay = (todayMilitaryHrs) => {
-    console.log(todayMilitaryHrs <= 24);
-    if (todayMilitaryHrs <= 5) {
+    if (todayMilitaryHrs <= 5 || todayMilitaryHrs > 18) {
       return "NIGHT";
     } else if (todayMilitaryHrs <= 8) {
       return "EARLY_MORNING";
@@ -14,13 +14,28 @@ export default function ZoneModal({ name, show, fullscreen, setShow }) {
       return "MORNING";
     } else if (todayMilitaryHrs <= 18) {
       return "AFTERNOON";
-    } else if (todayMilitaryHrs <= 24) {
-      return "MIDNIGHT";
     } else {
       return "ISSUE_WITH_TIME_CONSTRAINTS";
     }
   };
 
+  const sliderValueToString = (val) => {
+    const value = Number(val);
+    switch (value) {
+      case 0:
+        return "Early Morning";
+      case 1:
+        return "Morning";
+      case 2:
+        return "Afternoon";
+      case 3:
+        return "Night";
+      default:
+        return "Issue finding time of day";
+    }
+  };
+
+  const [sliderValue, setSliderValue] = useState(4);
   const [catchReport, setCatchReport] = useState({
     species: "",
     size: "",
@@ -28,8 +43,8 @@ export default function ZoneModal({ name, show, fullscreen, setShow }) {
     time_of_day: calculateTimeOfDay(new Date().getHours()),
     bait_type: "",
     quantity: undefined,
-    report_date: new Date().toISOString().split("T")[0], // Current date
-    catch_date: new Date().toISOString().split("T")[0], // Current date
+    report_date: new Date().toISOString(), // Current date
+    catch_date: new Date().toISOString(), // Current date
     released: false,
   });
 
@@ -78,8 +93,21 @@ export default function ZoneModal({ name, show, fullscreen, setShow }) {
           </Form.Group>
 
           <Form.Group controlId='time_of_day'>
-            <Form.Label>Time of Day</Form.Label>
-            <Form.Control
+            <Form.Label>Time of Day: {catchReport.time_of_day}</Form.Label>
+            <FormRange
+              value={sliderValue}
+              min={0}
+              max={3}
+              onChange={(e) => {
+                setSliderValue(e.target.value);
+                setCatchReport({
+                  ...catchReport,
+                  time_of_day: sliderValueToString(e.target.value),
+                });
+              }}
+            />
+
+            {/* <Form.Control
               type='text'
               name='time_of_day'
               value={
@@ -88,18 +116,7 @@ export default function ZoneModal({ name, show, fullscreen, setShow }) {
               }
               onChange={handleChange}
               required
-            />
-          </Form.Group>
-
-          <Form.Group controlId='bait_type'>
-            <Form.Label>Bait Type</Form.Label>
-            <Form.Control
-              type='text'
-              name='bait_type'
-              value={catchReport.bait_type}
-              onChange={handleChange}
-              required
-            />
+            /> */}
           </Form.Group>
 
           <Form.Group controlId='quantity'>
@@ -113,23 +130,23 @@ export default function ZoneModal({ name, show, fullscreen, setShow }) {
             />
           </Form.Group>
 
-          <Form.Group controlId='report_date'>
-            <Form.Label>Report Date</Form.Label>
-            <Form.Control
-              type='date'
-              name='report_date'
-              value={catchReport.report_date}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-
           <Form.Group controlId='catch_date'>
             <Form.Label>Catch Date</Form.Label>
             <Form.Control
               type='date'
               name='catch_date'
               value={catchReport.catch_date}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group controlId='bait_type'>
+            <Form.Label>Bait Type</Form.Label>
+            <Form.Control
+              type='text'
+              name='bait_type'
+              value={catchReport.bait_type}
               onChange={handleChange}
               required
             />
