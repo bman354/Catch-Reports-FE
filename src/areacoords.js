@@ -78,7 +78,12 @@ const LOWER_HARBOR = [
 
 
 const CAPE_HAZE = [
-
+  [26.88908746480546, -82.17142930088033],
+  [26.834444564229052, -82.23510675979992],
+  [26.76924460245553, -82.21893865394371],
+  [26.772621212243678, -82.17305117268765],
+  [26.792362232069188, -82.1493708143173],
+  [26.855017140055903, -82.15898385092608],
 ];
 
 const GASPARILLA_SOUND = [
@@ -177,6 +182,17 @@ const fishingzones = [
   {
     name: "Matlache",
     coordinates: MATLACHA,
+    style: {
+      fillColor: "blue",
+      fillOpacity: 0.1,
+      strokeColor: "green",
+      strokeOpacity: 0.6,
+      strokeWeight: 3,
+    },
+  },
+  {
+    name: "Cape Haze Aquatic Preserve",
+    coordinates: CAPE_HAZE,
     style: {
       fillColor: "blue",
       fillOpacity: 0.1,
